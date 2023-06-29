@@ -73,21 +73,26 @@ const SignIn = () => {
   const { values, errors, touched, handleSubmit, handleChange } = formik;
   return (
     <>
-      <RootLayout>
-        <Box backgroundColor={"gray.50"} h={"full"} w={"full"} paddingTop={10}>
+       <RootLayout>
+      <Box backgroundColor={"gray.100"} h={"full"} w={"full"} paddingTop={10}>
           <Box
             as={"form"}
-            backgroundColor={"gray.50"}
+            backgroundColor={"gray.100"}
             pb={10}
             onSubmit={handleSubmit}
           >
             <Container
-              maxW={"sm"}
+              mt={100}
+              maxW={"lg"}
+              h={"400px"}
               backgroundColor={"white"}
               px={10}
               py={10}
               rounded={"md"}
               boxShadow={"sm"}
+              _hover={{
+                boxShadow: "0 0 8px rgba(0, 0, 0, 0.8)",
+              }}
             >
               <Flex
                 h={"full"}
@@ -95,18 +100,18 @@ const SignIn = () => {
                 alignItems={"center"}
                 rowGap={3}
               >
-                <Text textAlign={"center"} fontSize={"xl"}>
+                <Text textAlign={"center"} fontSize={"2xl"}>
                   Sign In
                 </Text>
                 <FormControl
                   isInvalid={Boolean(touched.username && errors.username)}
                 >
-                  <FormLabel htmlFor={"username"}>Username/Email</FormLabel>
+                  <FormLabel htmlFor={"username"} fontSize={"18px"}>Username/Email</FormLabel>
                   <Input
                     name={"username"}
                     id={"username"}
                     type={"text"}
-                    size={"sm"}
+                    size={"md"}
                     placeholder={"Enter email"}
                     value={values.username}
                     onChange={handleChange}
@@ -116,20 +121,20 @@ const SignIn = () => {
                 <FormControl
                   isInvalid={Boolean(touched.password && errors.password)}
                 >
-                  <FormLabel htmlFor={"password"}>Password</FormLabel>
+                  <FormLabel htmlFor={"password"} fontSize={"18px"}>Password</FormLabel>
                   <InputGroup>
                     <Input
                       name={"password"}
                       id={"password"}
                       type={showPassword ? "text" : "password"}
-                      size={"sm"}
+                      size={"md"}
                       placeholder={"Enter password"}
                       value={values.password}
                       onChange={handleChange}
                     />
                     <InputRightElement boxSize={"30px"}>
                       <IconButton
-                        size={"sm"}
+                        size={"md"}
                         aria-label={"password"}
                         onClick={setShowPassword.toggle}
                       >
@@ -139,12 +144,12 @@ const SignIn = () => {
                   </InputGroup>
                   <FormErrorMessage>{errors?.password}</FormErrorMessage>
                 </FormControl>
-                <Box w={"full"} mt={8}>
-                  <Text fontSize={"xs"} mb={1}>
+                <Box w={"full"} mt={4}>
+                  <Text fontSize={"15px"} mb={4}>
                     Don&apos;t have an account?
                     <Box
                       as={Link}
-                      fontSize={"inherit"}
+                      fontSize={"15px"}
                       to={"/sign-up"}
                       _hover={{ border: "none" }}
                     >
@@ -152,12 +157,14 @@ const SignIn = () => {
                       Sign up here
                     </Box>
                   </Text>
-                  <Button
+                  <Button      
                     size={"sm"}
                     width={"full"}
                     type={"submit"}
-                    colorScheme={"blue"}
+                    colorScheme={"green"}
                     isLoading={isLoading}
+                    fontSize={"20px"}
+                    height={"45px"}
                   >
                     Sign In
                   </Button>
