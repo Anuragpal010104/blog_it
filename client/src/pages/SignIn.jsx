@@ -23,6 +23,7 @@ import RootLayout from "../components/RootLayout";
 import useAuthStore from "../store/useAuthStore";
 import { instance } from "../utils/API";
 import { SIGNIN } from "../utils/ROUTES";
+import backgroundImage from "../assets/backgroundImage.jpg";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -73,16 +74,19 @@ const SignIn = () => {
   const { values, errors, touched, handleSubmit, handleChange } = formik;
   return (
     <>
-       <RootLayout>
-      <Box backgroundColor={"gray.100"} h={"full"} w={"full"} paddingTop={10}>
+      <RootLayout> 
           <Box
             as={"form"}
-            backgroundColor={"gray.100"}
-            pb={10}
+            // pb={10}
+            pt={120}
             onSubmit={handleSubmit}
+            // backgroundImage="url('https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmxvZyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60')"
+            backgroundImage={`url(${backgroundImage})`}
+            backgroundSize="cover"
+            h="80vh"
           >
+          <Box>
             <Container
-              mt={100}
               maxW={"lg"}
               h={"400px"}
               backgroundColor={"white"}
@@ -90,8 +94,11 @@ const SignIn = () => {
               py={10}
               rounded={"md"}
               boxShadow={"sm"}
+              // _hover={{
+              //   boxShadow: "0 0 8px rgba(0, 0, 0, 0.8)",
+              // }}
               _hover={{
-                boxShadow: "0 0 8px rgba(0, 0, 0, 0.8)",
+                boxShadow: "0 0 8px rgba(51, 102, 255, 1)",
               }}
             >
               <Flex
@@ -132,7 +139,7 @@ const SignIn = () => {
                       value={values.password}
                       onChange={handleChange}
                     />
-                    <InputRightElement boxSize={"30px"}>
+                    <InputRightElement boxSize={"40px"}>
                       <IconButton
                         size={"md"}
                         aria-label={"password"}
@@ -151,7 +158,8 @@ const SignIn = () => {
                       as={Link}
                       fontSize={"15px"}
                       to={"/sign-up"}
-                      _hover={{ border: "none" }}
+                      // _hover={{border: "none" }}
+                      _hover={{border: "none",color:"blue"}}
                     >
                       {" "}
                       Sign up here
@@ -171,8 +179,8 @@ const SignIn = () => {
                 </Box>
               </Flex>
             </Container>
+            </Box>
           </Box>
-        </Box>
       </RootLayout>
     </>
   );
